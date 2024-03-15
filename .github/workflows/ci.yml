@@ -15,30 +15,41 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build x86_64
+      - name: Build
         run: |
           mkdir build
           pushd build
           cmake ..
           cmake --build .
           popd
-      - name: Test x86_64
+      - name: Test
         run: build/sc_run test/sc_hw_linux_x86_64.bin | grep -q 'Hello Shellcode!'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sc_run
+          path: build/sc_run
+          if-no-files-found: error
+
   build_linux_x86:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install multilib
         run: sudo apt install -y gcc-multilib
-      - name: Build x86
+      - name: Build
         run: |
           mkdir build
           pushd build
           CFLAGS=-m32 cmake ..
           cmake --build .
           popd
-      - name: Test x86
+      - name: Test
         run: build/sc_run test/sc_hw_linux_x86.bin | grep -q 'Hello Shellcode!'
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sc_run
+          path: build/sc_run
+          if-no-files-found: error
   build_win_x86_64:
     runs-on: windows-latest
     steps:
@@ -50,14 +61,56 @@ jobs:
           cmake ..
           cmake --build .
           popd
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sc_run
+          path: build/sc_run.exe
+          if-no-files-found: error
   build_win_x86:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build x86_64
+      - name: Build
         run: |
           mkdir build
           pushd build
           cmake -A Win32 -T host=x86 ..
           cmake --build .
           popd
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sc_run
+          path: build/sc_run.exe
+          if-no-files-found: error
+  build_mac_x86_64:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          mkdir build
+          pushd build
+          cmake ..
+          cmake --build .
+          popd
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sc_run
+          path: build/sc_run
+          if-no-files-found: error
+  build_mac_x86:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          mkdir build
+          pushd build
+          CFLAGS=-m32 cmake ..
+          cmake --build .
+          popd
+      - uses: actions/upload-artifact@v4
+        with:
+          name: sc_run
+          path: build/sc_run
+          if-no-files-found: error
