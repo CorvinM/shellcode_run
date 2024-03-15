@@ -1,0 +1,41 @@
+name: CI
+on:
+  push:
+    branches:
+      - "main"
+      - "dev"
+  pull_request:
+    branches:
+      - "main"
+      - "dev"
+  workflow_dispatch:
+
+jobs:
+  build_linux_x86_64:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build x86_64
+        run: |
+          cd $GITHUB_WORKSPACE
+          mkdir build
+          pushd build
+          cmake ..
+          make
+          popd
+      - name: Test x86_64
+        run: build/sc_run test/sc_hw_linux_x86_64.bin | grep -q 'Hello Shellcode!'
+  build_linux_x86:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build x86
+        run: |
+          cd $GITHUB_WORKSPACE
+          mkdir build
+          pushd build
+          CFLAGS=-m32 cmake ..
+          make
+          popd
+      - name: Test x86
+        run: build/sc_run test/sc_hw_linux_x86.bin | grep -q 'Hello Shellcode!'
