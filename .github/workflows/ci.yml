@@ -60,7 +60,7 @@ jobs:
           pushd build
           cmake ..
           cmake --build .
-          ls -lah
+          ls
           popd
       - uses: actions/upload-artifact@v4
         with:
@@ -77,7 +77,7 @@ jobs:
           pushd build
           cmake -A Win32 -T host=x86 ..
           cmake --build .
-          ls -lah
+          ls
           popd
       - uses: actions/upload-artifact@v4
         with:
