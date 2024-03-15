@@ -65,7 +65,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: sc_run_win64.exe
-          path: build/sc_run.exe
+          path: build/Debug/sc_run.exe
           if-no-files-found: error
   build_win_x86:
     runs-on: windows-latest
@@ -82,7 +82,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: sc_run_win32.exe
-          path: build/sc_run.exe
+          path: build/Debug/sc_run.exe
           if-no-files-found: error
   build_mac_x86_64:
     runs-on: macos-latest
