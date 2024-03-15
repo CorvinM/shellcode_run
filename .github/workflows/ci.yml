@@ -26,7 +26,7 @@ jobs:
         run: build/sc_run test/sc_hw_linux_x86_64.bin | grep -q 'Hello Shellcode!'
       - uses: actions/upload-artifact@v4
         with:
-          name: sc_run
+          name: sc_run_linux_x86_64
           path: build/sc_run
           if-no-files-found: error
 
@@ -47,7 +47,7 @@ jobs:
         run: build/sc_run test/sc_hw_linux_x86.bin | grep -q 'Hello Shellcode!'
       - uses: actions/upload-artifact@v4
         with:
-          name: sc_run
+          name: sc_run_linux_x86
           path: build/sc_run
           if-no-files-found: error
   build_win_x86_64:
@@ -63,7 +63,7 @@ jobs:
           popd
       - uses: actions/upload-artifact@v4
         with:
-          name: sc_run
+          name: sc_run_win64.exe
           path: build/sc_run.exe
           if-no-files-found: error
   build_win_x86:
@@ -79,7 +79,7 @@ jobs:
           popd
       - uses: actions/upload-artifact@v4
         with:
-          name: sc_run
+          name: sc_run_win32.exe
           path: build/sc_run.exe
           if-no-files-found: error
   build_mac_x86_64:
@@ -95,7 +95,7 @@ jobs:
           popd
       - uses: actions/upload-artifact@v4
         with:
-          name: sc_run
+          name: sc_run_mac_x86_64
           path: build/sc_run
           if-no-files-found: error
   build_mac_x86:
@@ -111,6 +111,6 @@ jobs:
           popd
       - uses: actions/upload-artifact@v4
         with:
-          name: sc_run
+          name: sc_run_mac_x86
           path: build/sc_run
           if-no-files-found: error
