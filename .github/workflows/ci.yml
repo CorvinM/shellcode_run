@@ -83,7 +83,7 @@ jobs:
           path: build/sc_run.exe
           if-no-files-found: error
   build_mac_x86_64:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - name: Build
@@ -99,7 +99,7 @@ jobs:
           path: build/sc_run
           if-no-files-found: error
   build_mac_x86:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - name: Build
