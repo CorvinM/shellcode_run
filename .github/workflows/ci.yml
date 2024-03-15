@@ -100,19 +100,3 @@ jobs:
           name: sc_run_mac_x86_64
           path: build/sc_run
           if-no-files-found: error
-  build_mac_x86:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Build
-        run: |
-          mkdir build
-          pushd build
-          CFLAGS=-m32 cmake ..
-          cmake --build .
-          popd
-      - uses: actions/upload-artifact@v4
-        with:
-          name: sc_run_mac_x86
-          path: build/sc_run
-          if-no-files-found: error
