@@ -60,6 +60,6 @@ jobs:
         run: |
           mkdir build
           pushd build
-          CFLAGS=-m32 cmake ..
+          cmake -A Win32 -T host=x86 ..
           make
           popd
