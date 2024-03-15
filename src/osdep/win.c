@@ -1,7 +1,7 @@
 #include "../osdep.h"
 
 #include <windows.h>
-#include <memoryapi.h>
+// #include <memoryapi.h>
 
 void * sc_alloc(size_t size) {
     void *buf = NULL;
