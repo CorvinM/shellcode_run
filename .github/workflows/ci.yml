@@ -21,7 +21,7 @@ jobs:
           mkdir build
           pushd build
           cmake ..
-          make
+          cmake --build .
           popd
       - name: Test x86_64
         run: build/sc_run test/sc_hw_linux_x86_64.bin | grep -q 'Hello Shellcode!'
@@ -37,7 +37,7 @@ jobs:
           mkdir build
           pushd build
           CFLAGS=-m32 cmake ..
-          make
+          cmake --build .
           popd
       - name: Test x86
         run: build/sc_run test/sc_hw_linux_x86.bin | grep -q 'Hello Shellcode!'
@@ -50,7 +50,7 @@ jobs:
           mkdir build
           pushd build
           cmake ..
-          make
+          cmake --build .
           popd
   build_win_x86:
     runs-on: windows-latest
@@ -61,5 +61,5 @@ jobs:
           mkdir build
           pushd build
           cmake -A Win32 -T host=x86 ..
-          make
+          cmake --build .
           popd
