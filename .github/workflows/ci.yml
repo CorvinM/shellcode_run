@@ -39,3 +39,27 @@ jobs:
           popd
       - name: Test x86
         run: build/sc_run test/sc_hw_linux_x86.bin | grep -q 'Hello Shellcode!'
+  build_win_x86_64:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build x86_64
+        run: |
+          cd $GITHUB_WORKSPACE
+          mkdir build
+          pushd build
+          cmake ..
+          make
+          popd
+  build_win_x86:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build x86_64
+        run: |
+          cd $GITHUB_WORKSPACE
+          mkdir build
+          pushd build
+          CFLAGS=-m32 cmake ..
+          make
+          popd
