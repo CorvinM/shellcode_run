@@ -2,11 +2,9 @@ name: CI
 on:
   push:
     branches:
-      - "main"
       - "dev"
   pull_request:
     branches:
-      - "main"
       - "dev"
   workflow_dispatch:
 
@@ -95,6 +93,8 @@ jobs:
           cmake ..
           cmake --build .
           popd
+      - name: Test
+        run: build/sc_run test/sc_hw_mac_x86_64.bin | grep -q 'Hello Shellcode!'
       - uses: actions/upload-artifact@v4
         with:
           name: sc_run_mac_x86_64
