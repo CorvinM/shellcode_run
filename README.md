@@ -2,7 +2,7 @@
 
 ## Introduction
 
-Shellcode Run is a cross-platform utility designed to execute flat binary shellcode files effortlessly. This tool simplifies the process of running and testing shellcode, making it accessible to security researchers, penetration testers, and developers working on low-level system tasks. Shellcode Run is built to work across various platforms, including Windows, and Linux.
+Shellcode Run is a cross-platform utility designed to execute flat binary shellcode files effortlessly. This tool simplifies the process of running and testing shellcode, making it accessible to security researchers, penetration testers, and developers working on low-level system tasks. Shellcode Run is built to work across various platforms, including Windows, macOS, and Linux.
 
 ## Usage
 
